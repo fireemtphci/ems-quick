@@ -1,0 +1,322 @@
+{
+ "updated": "2026-09-30",
+ "menus": [
+  {
+   "key": "sop",
+   "name": "北市救護流程",
+   "sub": "G O A M T S",
+   "items": [
+    {
+     "code": "G1",
+     "title": "通用程序",
+     "summary": "",
+     "pdf": "pdf/G1.pdf",
+     "note": "手冊 PDF 第8頁"
+    },
+    {
+     "code": "G2",
+     "title": "現場評估",
+     "summary": "",
+     "pdf": "pdf/G2.pdf",
+     "note": "手冊 PDF 第9–14頁"
+    },
+    {
+     "code": "G3",
+     "title": "非外傷",
+     "summary": "",
+     "pdf": "pdf/G3.pdf",
+     "note": "手冊 PDF 第15–18頁"
+    },
+    {
+     "code": "G4",
+     "title": "外傷",
+     "summary": "",
+     "pdf": "pdf/G4.pdf",
+     "note": "手冊 PDF 第19–24頁"
+    },
+    {
+     "code": "G5-1",
+     "title": "成人危急個案",
+     "summary": "",
+     "pdf": "pdf/G5-1.pdf",
+     "note": "手冊 PDF 第25–26頁"
+    },
+    {
+     "code": "G5-2",
+     "title": "小兒危急個案",
+     "summary": "",
+     "pdf": "pdf/G5-2.pdf",
+     "note": "手冊 PDF 第27–29頁"
+    },
+    {
+     "code": "G6",
+     "title": "車內照護",
+     "summary": "",
+     "pdf": "pdf/G6.pdf",
+     "note": "手冊 PDF 第30–33頁"
+    },
+    {
+     "code": "G7",
+     "title": "到院傷病患交接",
+     "summary": "",
+     "pdf": "pdf/G7.pdf",
+     "note": "手冊 PDF 第34–36頁"
+    },
+    {
+     "code": "O1",
+     "title": "線上醫療指導申請",
+     "summary": "",
+     "pdf": "pdf/O1.pdf",
+     "note": "手冊 PDF 第37–38頁"
+    },
+    {
+     "code": "A1",
+     "title": "成人氣管內管插管",
+     "summary": "",
+     "pdf": "pdf/A1.pdf",
+     "note": "手冊 PDF 第39–41頁"
+    },
+    {
+     "code": "A2",
+     "title": "聲門上呼吸道裝置",
+     "summary": "",
+     "pdf": "pdf/A2.pdf",
+     "note": "手冊 PDF 第42–43頁"
+    },
+    {
+     "code": "A3",
+     "title": "異物哽塞",
+     "summary": "",
+     "pdf": "pdf/A3.pdf",
+     "note": "手冊 PDF 第44–45頁"
+    },
+    {
+     "code": "A4",
+     "title": "復甦後照護",
+     "summary": "",
+     "pdf": "pdf/A4.pdf",
+     "note": "手冊 PDF 第46–49頁"
+    },
+    {
+     "code": "M1",
+     "title": "成人非外傷無脈搏",
+     "summary": "",
+     "pdf": "pdf/M1.pdf",
+     "note": "手冊 PDF 第50–55頁"
+    },
+    {
+     "code": "M2",
+     "title": "呼吸困難",
+     "summary": "",
+     "pdf": "pdf/M2.pdf",
+     "note": "手冊 PDF 第56–58頁"
+    },
+    {
+     "code": "M3",
+     "title": "意識改變",
+     "summary": "",
+     "pdf": "pdf/M3.pdf",
+     "note": "手冊 PDF 第59–61頁"
+    },
+    {
+     "code": "M4",
+     "title": "抽搐",
+     "summary": "",
+     "pdf": "pdf/M4.pdf",
+     "note": "手冊 PDF 第62–64頁"
+    },
+    {
+     "code": "M5",
+     "title": "過敏反應及過敏性休克",
+     "summary": "",
+     "pdf": "pdf/M5.pdf",
+     "note": "手冊 PDF 第65–66頁"
+    },
+    {
+     "code": "M6",
+     "title": "疑似腦中風",
+     "summary": "",
+     "pdf": "pdf/M6.pdf",
+     "note": "手冊 PDF 第67–69頁"
+    },
+    {
+     "code": "M7",
+     "title": "疑似缺血性胸痛",
+     "summary": "",
+     "pdf": "pdf/M7.pdf",
+     "note": "手冊 PDF 第70–73頁"
+    },
+    {
+     "code": "M8",
+     "title": "嚴重緩脈",
+     "summary": "",
+     "pdf": "pdf/M8.pdf",
+     "note": "手冊 PDF 第74–75頁"
+    },
+    {
+     "code": "M9",
+     "title": "嚴重頻脈",
+     "summary": "",
+     "pdf": "pdf/M9.pdf",
+     "note": "手冊 PDF 第76–78頁"
+    },
+    {
+     "code": "M10",
+     "title": "急性肺水腫、低血壓及休克",
+     "summary": "",
+     "pdf": "pdf/M10.pdf",
+     "note": "手冊 PDF 第79–80頁"
+    },
+    {
+     "code": "T1",
+     "title": "成人外傷無脈搏",
+     "summary": "",
+     "pdf": "pdf/T1.pdf",
+     "note": "手冊 PDF 第81–86頁"
+    },
+    {
+     "code": "T2",
+     "title": "外傷性腦傷",
+     "summary": "",
+     "pdf": "pdf/T2.pdf",
+     "note": "手冊 PDF 第87–89頁"
+    },
+    {
+     "code": "T3",
+     "title": "胸部外傷",
+     "summary": "",
+     "pdf": "pdf/T3.pdf",
+     "note": "手冊 PDF 第90–92頁"
+    },
+    {
+     "code": "T4",
+     "title": "腹部外傷",
+     "summary": "",
+     "pdf": "pdf/T4.pdf",
+     "note": "手冊 PDF 第93–94頁"
+    },
+    {
+     "code": "T5",
+     "title": "肢體外傷",
+     "summary": "",
+     "pdf": "pdf/T5.pdf",
+     "note": "手冊 PDF 第95–96頁"
+    },
+    {
+     "code": "T6",
+     "title": "外傷性休克",
+     "summary": "",
+     "pdf": "pdf/T6.pdf",
+     "note": "手冊 PDF 第97–100頁"
+    },
+    {
+     "code": "T7",
+     "title": "壓砸傷",
+     "summary": "",
+     "pdf": "pdf/T7.pdf",
+     "note": "手冊 PDF 第101–102頁"
+    },
+    {
+     "code": "S1",
+     "title": "火場燒傷",
+     "summary": "",
+     "pdf": "pdf/S1.pdf",
+     "note": "手冊 PDF 第103–104頁"
+    },
+    {
+     "code": "S2",
+     "title": "燒燙傷處置",
+     "summary": "",
+     "pdf": "pdf/S2.pdf",
+     "note": "手冊 PDF 第105–107頁"
+    },
+    {
+     "code": "S3",
+     "title": "溺水",
+     "summary": "",
+     "pdf": "pdf/S3.pdf",
+     "note": "手冊 PDF 第108–109頁"
+    },
+    {
+     "code": "S4",
+     "title": "中毒及藥物過量",
+     "summary": "",
+     "pdf": "pdf/S4.pdf",
+     "note": "手冊 PDF 第110–111頁"
+    },
+    {
+     "code": "S5",
+     "title": "自然生產",
+     "summary": "",
+     "pdf": "pdf/S5.pdf",
+     "note": "手冊 PDF 第112–114頁"
+    },
+    {
+     "code": "S6",
+     "title": "產科急症",
+     "summary": "",
+     "pdf": "pdf/S6.pdf",
+     "note": "手冊 PDF 第115–116頁"
+    },
+    {
+     "code": "S7",
+     "title": "新生兒",
+     "summary": "",
+     "pdf": "pdf/S7.pdf",
+     "note": "手冊 PDF 第117–120頁"
+    },
+    {
+     "code": "S8",
+     "title": "小兒通用",
+     "summary": "",
+     "pdf": "pdf/S8.pdf",
+     "note": "手冊 PDF 第121–124頁"
+    },
+    {
+     "code": "S9",
+     "title": "精神異常/行為急症病人救護",
+     "summary": "",
+     "pdf": "pdf/S9.pdf",
+     "note": "手冊 PDF 第125–131頁"
+    },
+    {
+     "code": "附錄",
+     "title": "封面、使用規範、附錄 I–VII",
+     "summary": "",
+     "pdf": "pdf/rest.pdf",
+     "note": "含不施行CPR原則、START/JumpSTART、12導程等"
+    }
+   ]
+  },
+  {
+   "key": "tech",
+   "name": "北市單項技術",
+   "sub": "消防署技術規範",
+   "items": []
+  },
+  {
+   "key": "acls",
+   "name": "ACLS",
+   "sub": "高級心臟救命術",
+   "items": []
+  },
+  {
+   "key": "tecc",
+   "name": "TECC",
+   "sub": "戰術戰傷救護",
+   "items": []
+  },
+  {
+   "key": "apls",
+   "name": "APLS",
+   "sub": "高級小兒救命術",
+   "items": []
+  },
+  {
+   "key": "pals",
+   "name": "PALS",
+   "sub": "小兒高級心臟救命術",
+   "items": []
+  }
+ ]
+}

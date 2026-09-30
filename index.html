@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>救護速查</title>
+<style>
+:root{--bg:#f6f7f9;--card:#fff;--tx:#1b1f24;--mu:#667085;--bd:#dfe3e8;--ac:#c62828;--ac2:#fdecea;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#14171b;--card:#1e2329;--tx:#e8eaed;--mu:#98a2b3;--bd:#333a42;--ac:#ef5350;--ac2:#3a2020}}
+:root[data-theme="dark"]{--bg:#14171b;--card:#1e2329;--tx:#e8eaed;--mu:#98a2b3;--bd:#333a42;--ac:#ef5350;--ac2:#3a2020}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:-apple-system,"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;line-height:1.5}
+.wrap{max-width:720px;margin:0 auto;padding:12px}
+h1{font-size:18px;margin:4px 0 10px}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:10px}
+.tab{padding:10px 4px;border:1px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;font-size:14px;font-weight:600;cursor:pointer}
+.tab.on{background:var(--ac);border-color:var(--ac);color:#fff}
+.tab small{display:block;font-weight:400;font-size:10px;opacity:.8}
+input{width:100%;padding:10px;border:1px solid var(--bd);border-radius:8px;background:var(--card);color:var(--tx);font:inherit;margin-bottom:10px}
+.item{background:var(--card);border:1px solid var(--bd);border-radius:10px;margin-bottom:8px;overflow:hidden}
+.hd{display:flex;gap:10px;align-items:center;padding:12px;cursor:pointer}
+.code{background:var(--ac2);color:var(--ac);font-weight:700;border-radius:6px;padding:2px 8px;font-size:13px;min-width:48px;text-align:center}
+.bd{display:none;padding:0 12px 12px;border-top:1px solid var(--bd)}
+.item.open .bd{display:block}
+.txt{white-space:pre-wrap;margin:10px 0}
+.mu{color:var(--mu);font-size:13px}
+.btn{display:inline-block;padding:10px 14px;border-radius:8px;background:var(--ac);color:#fff;font-weight:600;text-decoration:none}
+.empty{color:var(--mu);text-align:center;padding:30px 10px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🚑 救護速查 <span class="mu" id="ver"></span></h1>
+  <div class="tabs" id="tabs"></div>
+  <input id="q" placeholder="搜尋代碼、標題、重點…">
+  <div id="list"></div>
+</div>
+<script>
+var INLINE=null; /*__INLINE__*/
+var D=null, cur=0;
+function esc(s){return String(s||"").replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+function draw(){
+  document.getElementById("ver").textContent="資料更新 "+D.updated;
+  document.getElementById("tabs").innerHTML=D.menus.map(function(m,i){return '<button class="tab'+(i==cur?' on':'')+'" data-i="'+i+'">'+esc(m.name)+'<small>'+esc(m.sub)+'</small></button>';}).join("");
+  document.querySelectorAll(".tab").forEach(function(b){b.onclick=function(){cur=+b.dataset.i;document.getElementById("q").value="";draw();};});
+  var q=document.getElementById("q").value.trim().toLowerCase();
+  var arr=D.menus[cur].items.filter(function(x){return !q||(x.code+x.title+x.summary).toLowerCase().indexOf(q)>-1;});
+  var h=arr.map(function(x){
+    return '<div class="item"><div class="hd"><span class="code">'+esc(x.code)+'</span><b>'+esc(x.title)+'</b></div><div class="bd">'
+     +'<div class="txt">'+(x.summary?esc(x.summary):'<span class="mu">（重點整理中）</span>')+'</div>'
+     +(x.note?'<div class="mu">'+esc(x.note)+'</div>':'')
+     +(x.pdf?'<p>'+(INLINE?'<span class="mu">預覽版無法開啟 PDF，正式網站才可以</span>':'<a class="btn" href="'+esc(x.pdf)+'" target="_blank" rel="noopener">開啟完整 PDF</a>')+'</p>':'')
+     +'</div></div>';}).join("");
+  document.getElementById("list").innerHTML=h||'<div class="empty">'+(q?'找不到符合的資料':'這個選單還沒有資料')+'</div>';
+  document.querySelectorAll(".hd").forEach(function(e){e.onclick=function(){e.parentNode.classList.toggle("open");};});
+}
+document.getElementById("q").oninput=draw;
+if(INLINE){D=INLINE;draw();}
+else fetch("data.json?t="+Date.now()).then(function(r){return r.json();}).then(function(j){D=j;draw();})
+ .catch(function(){document.getElementById("list").innerHTML='<div class="empty">讀不到 data.json，請從網址開啟，不要直接點檔案</div>';});
+</script>
+</body>
+</html>
