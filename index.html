@@ -35,7 +35,7 @@ input{width:100%;padding:10px;border:1px solid var(--bd);border-radius:8px;backg
 .txt{white-space:pre-wrap;margin:10px 0}
 .fr{display:grid;grid-template-columns:84px 1fr;gap:4px 10px;margin:10px 0;padding:10px;background:var(--dr2);border-radius:8px}
 .fr dt{font-weight:700;color:var(--dr);font-size:13px}
-.fr dd{margin:0}
+.fr dd{margin:0;white-space:pre-wrap}
 .dgh{font-weight:700;margin:10px 0 6px}.dg{margin-bottom:6px;border:1px solid var(--dr);border-radius:8px;overflow:hidden}.dgt{padding:9px 12px;font-weight:700;color:var(--dr);cursor:pointer;display:flex;gap:8px;align-items:center;justify-content:space-between}.dgt:after{content:"▾";margin-left:auto}.dg .fr{display:none;margin:0;border-radius:0}.dg.open .fr{display:grid}
 .ban{background:var(--pb);border:1px dashed var(--pa);border-radius:8px;padding:8px 10px;margin-bottom:10px;font-size:13px}
 .mu{color:var(--mu);font-size:13px}
@@ -55,7 +55,7 @@ input{width:100%;padding:10px;border:1px solid var(--bd);border-radius:8px;backg
 var INLINE=null; /*__INLINE__*/
 var D=null, cur=0, flt="";
 function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
-function hay(x){return x.code+x.title+(x.summary||"")+(x.drugs||[]).map(function(g){return g.name+g.f.map(function(a){return a.join("")}).join("")}).join("");}
+function hay(x){return x.code+x.title+(x.summary||"")+(x.f||[]).map(function(a){return a.join("")}).join("")+(x.drugs||[]).map(function(g){return g.name+g.f.map(function(a){return a.join("")}).join("")}).join("");}
 function draw(){
   var M=D.menus[cur], isDrug=M.key=="drug";
   document.getElementById("ver").textContent="資料更新 "+D.updated;
@@ -68,10 +68,12 @@ function draw(){
   var q=document.getElementById("q").value.trim().toLowerCase();
   var arr=M.items.filter(function(x){return (!flt||(flt=="p"?x.p:x.drugs))&&(!q||hay(x).toLowerCase().indexOf(q)>-1);});
   var h=(M.banner?'<div class="ban">'+esc(M.banner)+'</div>':'')+arr.map(function(x){
-    var body='<div class="txt">'+(x.summary?esc(x.summary):'<span class="mu">（重點整理中）</span>')+'</div>'
+    var body='<div class="txt">'+(x.summary?esc(x.summary):(x.f?'':'<span class="mu">（重點整理中）</span>'))+'</div>'
+      +(x.f?'<dl class="fr">'+x.f.map(function(a){return '<dt>'+esc(a[0])+'</dt><dd>'+esc(a[1])+'</dd>';}).join("")+'</dl>':'')
       +(x.drugs?'<div class="dgh">💊 藥物（點藥名看劑量與使用時機）</div>'+x.drugs.map(function(g){return '<div class="dg"><div class="dgt"><span>'+esc(g.name)+'</span>'+(g.p?'<span class="pb">P</span>':'')+'</div><dl class="fr">'+g.f.map(function(a){return '<dt>'+esc(a[0])+'</dt><dd>'+esc(a[1])+'</dd>';}).join("")+'</dl></div>';}).join(""):'');
     return '<div class="item'+(x.p?' p':'')+(isDrug?' drug':'')+'"><div class="hd"><span class="code">'+esc(x.code)+'</span><b>'+esc(x.title)+'</b>'+(x.drugs?'<span title="含藥物">💊</span>':'')+(x.p?'<span class="pb" title="高級救護技術員（P）項目">P</span>':'')+'</div><div class="bd">'
      +body+(x.note?'<div class="mu">'+esc(x.note)+'</div>':'')
+     +(x.files?x.files.map(function(f){return /\.(png|jpe?g)$/i.test(f.path)?(INLINE?'<p class="mu">🖼 '+esc(f.label)+'（預覽版無法顯示圖片）</p>':'<p><img src="'+esc(f.path)+'" alt="'+esc(f.label)+'" style="max-width:100%;border:1px solid var(--bd);border-radius:8px"><br><span class="mu">'+esc(f.label)+'</span></p>'):'<p>'+(INLINE?'<span class="mu">📎 '+esc(f.label)+'（預覽版無法開啟）</span>':'<a class="btn" href="'+esc(f.path)+'" target="_blank" rel="noopener">'+esc(f.label)+'</a>')+'</p>';}).join(""):'')
      +(x.pdf?'<p>'+(INLINE?'<span class="mu">預覽版無法開啟 PDF，正式網站才可以</span>':'<a class="btn" href="'+esc(x.pdf)+'" target="_blank" rel="noopener">開啟完整 PDF</a>')+'</p>':'')
      +'</div></div>';}).join("");
   document.getElementById("list").innerHTML=h||'<div class="empty">'+(q?'找不到符合的資料':'這個選單還沒有資料')+'</div>';
